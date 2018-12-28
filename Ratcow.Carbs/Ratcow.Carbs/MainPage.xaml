@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:Ratcow.Carbs"
+             x:Class="Ratcow.Carbs.MainPage">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:FloatStringConverter x:Key="floatStringConvertor"></local:FloatStringConverter>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <StackLayout Orientation="Vertical" Padding="10,25">
+        <Grid >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Row="0" Grid.Column="0" Text="Carbs"/>
+            <Entry Grid.Row="0" Grid.Column="1" Text="{Binding Carbs, Converter={StaticResource floatStringConvertor}, Mode=TwoWay}" />
+
+            <Label Grid.Row="1" Grid.Column="0" Text="Weight"/>
+            <Entry Grid.Row="1" Grid.Column="1" Text="{Binding Weight, Converter={StaticResource floatStringConvertor}, Mode=TwoWay}" />
+
+            <Label Grid.Row="2" Grid.Column="0" Text="New weight"/>
+            <Entry Grid.Row="2" Grid.Column="1" Text="{Binding NewWeight, Converter={StaticResource floatStringConvertor}, Mode=TwoWay}" />
+
+            <Label Grid.Row="3" Grid.Column="0" Text="Result" FontAttributes="Bold" />
+            <Label Grid.Row="3" Grid.Column="1" Text="{Binding Result, Converter={StaticResource floatStringConvertor}}" 
+                   FontAttributes="Bold" FontSize="Large"/>
+
+            <Button Grid.Row="4" Grid.Column="0" Margin="5" Text="Calculate" Command="{Binding Calculate}" />
+            <Button Grid.Row="4" Grid.Column="1" Margin="5" Text="Clear" Command="{Binding Clear}" />
+        </Grid>
+    </StackLayout>
+
+</ContentPage>
